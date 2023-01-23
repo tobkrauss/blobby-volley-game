@@ -14,7 +14,7 @@ if(keyIsDown(65)&& this.x > 0) {
     this.x -= 7
 }
 
-if(keyIsDown(68)&& this.x < 545) {
+if(keyIsDown(68)&& this.x < 615 - this.width) {
     this.x += 7
 }
 

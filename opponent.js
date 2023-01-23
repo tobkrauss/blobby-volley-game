@@ -10,7 +10,7 @@ class Opponent {
 draw() {
     image(game.opponentImage, this.x, this.y, this.width, this.height)
 
-    if(keyIsDown(LEFT_ARROW)&& this.x > 647) {
+    if(keyIsDown(LEFT_ARROW)&& this.x > 635) {
         this.x -= 7
     }
     
