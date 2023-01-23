@@ -5,8 +5,9 @@ class Player {
         this.x = 277,5
         this.y = 600 - this.height
         this.velocity = 0
-}
-draw() {
+        this.gravity = 4
+    }
+    draw() {
     image(game.playerImage, this.x, this.y, this.width, this.height)
 
 if(keyIsDown(65)&& this.x > 0) {
@@ -17,10 +18,18 @@ if(keyIsDown(68)&& this.x < 545) {
     this.x += 7
 }
 
+if(keyIsDown(87)&& this.y >=150) {
+    this.y -= 16
+}
+
+if(keyIsDown(83) && this.y <= 600 - this.height) {
+    this.y += 7
+}
+
+if(this.y <= 600 - this.height) {
+    this.y += this.gravity
 }  
 
-jump() {
-    this.velocity = -5
-}
 }
 
+}

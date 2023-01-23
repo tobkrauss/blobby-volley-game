@@ -5,6 +5,7 @@ class Opponent {
         this.x = 897,5   
         this.y = 600 - this.height
         this.velocity = 0
+        this.gravity = 4
 }
 draw() {
     image(game.opponentImage, this.x, this.y, this.width, this.height)
@@ -17,10 +18,24 @@ draw() {
         this.x += 7
     }
 
+    if(keyIsDown(UP_ARROW)) {
+        this.velocity = -7
+    }
 
-}
-jump() {
-    this.velocity = -10
-}
+    if(keyIsDown(38)&& this.y >=150) {
+        this.y -= 16
+    }
+    
+    if(keyIsDown(40) && this.y <= 600 - this.height) {
+        this.y += 7
+    }
+    
+    if(this.y <= 600 - this.height) {
+        this.y += this.gravity
+    }  
+    
+
+}  
+
 }
 
