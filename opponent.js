@@ -34,7 +34,7 @@ draw() {
         this.y += this.gravity
     }  
     
-
+    
 }  
 
 }

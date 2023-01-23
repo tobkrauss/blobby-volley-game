@@ -28,7 +28,7 @@ if(keyIsDown(83) && this.y <= 600 - this.height) {
 
 if(this.y <= 600 - this.height) {
     this.y += this.gravity
-}  
+} 
 
 }
 

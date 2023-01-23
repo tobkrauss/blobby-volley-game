@@ -31,15 +31,10 @@ draw (){
     this.player.draw()
     this.opponent.draw()
     this.ball.draw()
-
-    if (this.ball.collision(this.player)) {
-    }
-
-    if (this.ball.collision(this.opponent)){
-
-    }
+    this.ball.collision(this.player)
+    this.ball.collision(this.opponent)
     
 
-}
 
+}
 }
