@@ -5,10 +5,11 @@ let opponentScore = 0;
 
 class Ball {
   constructor() {
+    this.lastCollision = 0
     this.width = 80
     this.height = 80
     this.x = 200
-    this.y = Math.random() * 200
+    this.y = 300
     this.xspeed = 5
     this.yspeed = -2
   }
@@ -48,38 +49,48 @@ class Ball {
 
       if (this.y >= 600 - this.height && this.x <= 615) {
         opponentScore = opponentScore + 1
+        game.player.x = 277,5
+        game.player.y = 600 - this.height
+        game.opponent.x = 897,5   
+        game.opponent.y = 600 - this.height
       }
 
       if (this.y >= 600 - this.height && this.x > 635) {
-        playerScore = playerScore + 1
+        playerScore = playerScore + 1;
+        game.player.x = 277,5
+        game.player.y = 600 - this.height
+        game.opponent.x = 897,5   
+        game.opponent.y = 600 - this.height
       }
     }
+    
+      checkGameOverPlayer();
+      if (gameOverPlayer == true) {
+        fill("blue")
+        rect(100, 50, 1000, 600)
+        fill("white")
+        text("Player Green won! To restart the game, press ENTER ", 200, 350)
 
-    checkGameOverPlayer();
-    if (gameOverPlayer == true) {
-      fill("blue")
-      rect(100, 50, 1000, 600)
-      fill("white")
-      text("Player Green won! To restart the game, press ENTER ", 200, 350)
-      
-      checkRestartOpponentWon();
+        checkRestartOpponentWon();
+      }
+
+      checkGameOverOpponent();
+      if (gameOverOpponent == true) {
+        fill("blue")
+        rect(100, 50, 1000, 600)
+        fill("white")
+        text("Player Red won! To restart the game, press ENTER ", 200, 350)
+
+        checkRestartPlayerWon();
+      }
+
     }
-
-    checkGameOverOpponent();
-    if (gameOverOpponent == true) {
-      fill("blue")
-      rect(100, 50, 1000, 600)
-      fill("white")
-      text("Player Red won! To restart the game, press ENTER ", 200, 350)
-      
-      checkRestartPlayerWon();
-    }
-
-  }
+  
 
 
   collision(playerInfo) {
-
+    console.log(this.lastCollision)
+    
     let ballX = this.x + this.width / 2
     let ballY = this.y + this.height / 2
 
@@ -92,6 +103,7 @@ class Ball {
 
   }
 }
+
 
 function checkGameOverPlayer() {
   if (opponentScore >= 2) {
@@ -115,10 +127,10 @@ function restartGameOpponentWon() {
   game.ball.y = 100
   game.xspeed = -5
   game.yspeed = -2
-  game.player.x = 277,5
+  game.player.x = 277, 5
   game.player.y = 600 - game.player.height
 
-  game.opponent.x = 897,5   
+  game.opponent.x = 897, 5
   game.opponent.y = 600 - game.opponent.height
 
   gameOverPlayer = false
@@ -147,10 +159,10 @@ function restartGamePlayerWon() {
   game.ball.y = 100
   game.xspeed = 5
   game.yspeed = -2
-  game.player.x = 277,5
+  game.player.x = 277, 5
   game.player.y = 600 - game.player.height
 
-  game.opponent.x = 897,5   
+  game.opponent.x = 897, 5
   game.opponent.y = 600 - game.opponent.height
 
   gameOverOpponent = false
