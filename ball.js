@@ -7,6 +7,7 @@ class Ball {
         this.xspeed = 5
         this.yspeed = 2
     }
+
     draw() {
     image(game.ballImage, this.x, this.y, this.width, this.height)
 

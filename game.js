@@ -1,6 +1,7 @@
 class Game {
     constructor () {
         this.background = new Background()
+        this.backgroundImageAll
         this.backgroundImageBeach
         this.backgroundImageNet
         this.backgroundImageShadow
@@ -13,6 +14,7 @@ class Game {
     }
 
 preload () {
+    this.backgroundImageAll = loadImage("./Images/backgroundAll.png")
     this.backgroundImageBeach = loadImage("./Images/background.png")
     this.backgroundImageNet = loadImage ("./Images/net.png")
     this.backgroundImageShadow = loadImage ("./Images/net_shadow.png")
@@ -27,6 +29,13 @@ setup () {
 }
 
 draw (){
+if (mode == 0) {
+    background(this.backgroundImageAll, 600, 400)
+    fill("white")
+    textSize(36)
+    text("Press ENTER to start the game", 370, 100)
+}
+if (mode == 1) {
     this.background.draw()
     this.player.draw()
     this.opponent.draw()
@@ -34,7 +43,12 @@ draw (){
     this.ball.collision(this.player)
     this.ball.collision(this.opponent)
     
-
-
 }
+}
+}
+
+function keyPressed() {
+    if(keyCode === ENTER){
+        mode = 1
+    }
 }
