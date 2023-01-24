@@ -42,7 +42,6 @@ if (mode == 1) {
     this.ball.draw()
     this.ball.collision(this.player)
     this.ball.collision(this.opponent)
-    
 }
 }
 }
@@ -52,3 +51,5 @@ function keyPressed() {
         mode = 1
     }
 }
+
+
