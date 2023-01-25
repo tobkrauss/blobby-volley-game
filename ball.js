@@ -30,11 +30,11 @@ class Ball {
         this.xspeed = -this.xspeed;
       }
 
-      if (this.x >= 635 - this.width && this.x < 610 && this.y >= 300 - this.height) {
+      if (this.x >= 625 - this.width && this.x < 625 && this.y >= 300 - this.height) {
         this.xspeed = -this.xspeed;
       }
 
-      if (this.x <= 635 && this.x > 660 && this.y >= 300 - this.height) {
+      if (this.x <= 625 && this.x > 660 && this.y >= 300 - this.height) {
         this.xspeed = -this.xspeed;
       }
 
@@ -105,6 +105,7 @@ class Ball {
     let playerY = playerInfo.y + playerInfo.height / 2
 
     if (this.collisionPlayerAllowed == true && dist(ballX, ballY, playerX, playerY) <= 80) {
+      /* game.soundCollision.play(); */
       this.xspeed = -this.xspeed*1.05
       this.yspeed = -this.yspeed
       this.collisionPlayerAllowed = false
@@ -114,7 +115,7 @@ class Ball {
       this.collisionPlayerAllowed = true
 
     }
-  }
+  } 
 
   collisionOpponent(opponentInfo) {
 
@@ -125,6 +126,7 @@ class Ball {
     let opponentY = opponentInfo.y + opponentInfo.height / 2
 
     if (this.collisionOpponentAllowed == true && dist(ballX, ballY, opponentX, opponentY) <= 80) {
+      /* game.soundCollision.play(); */
       this.xspeed = -this.xspeed*1.05
       this.yspeed = -this.yspeed
       this.collisionOpponentAllowed = false
@@ -143,6 +145,7 @@ class Ball {
 function checkGameOverPlayer() {
   if (opponentScore >= 5) {
     gameOverPlayer = true
+   /*  game.soundGameOver.play(); */
   }
 }
 
@@ -154,7 +157,6 @@ function checkRestartOpponentWon() {
 
 function restartGameOpponentWon() {
 
-  mode = 1
   playerScore = 0
   opponentScore = 0
 
@@ -175,6 +177,7 @@ function restartGameOpponentWon() {
 function checkGameOverOpponent() {
   if (playerScore >= 5) {
     gameOverOpponent = true
+   /*  game.soundGameOver.play(); */
   }
 }
 
@@ -186,7 +189,6 @@ function checkRestartPlayerWon() {
 
 function restartGamePlayerWon() {
 
-  mode = 1
   playerScore = 0
   opponentScore = 0
 

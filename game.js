@@ -10,7 +10,9 @@ class Game {
         this.opponent = new Opponent()
         this.opponentImage
         this.ball = new Ball ()
-        this.ballImage
+        this.soundCollision
+        this.soundBackground
+        this.soundGameOver
     }
 
 preload () {
@@ -21,7 +23,11 @@ preload () {
     
     this.playerImage = loadImage("./Images/player_1.png")
     this.opponentImage = loadImage("./Images/player_2.png")
-    this.ballImage = loadImage ("./Images/volleyball.png")
+    this.ballImage = loadImage("./Images/volleyball.png")
+    this.soundCollision = new Audio ("./Sounds/sound-collision.mp3")
+    this.soundBackground = new Audio ("./Sounds/ocean-waves.mp3")
+    this.soundGameOver = new Audio ("./Sounds/game-over-horn.mp3")
+    
 }
 
 setup () {
