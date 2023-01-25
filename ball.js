@@ -10,8 +10,12 @@ class Ball {
     this.height = 80
     this.x = 200
     this.y = 300
-    this.xspeed = 5
-    this.yspeed = -2
+    this.xspeed = 8
+    this.yspeed = -2.5
+    this.gravity = 0.7 
+    this.collisionPlayerAllowed = true
+    this.collisionOpponentAllowed = true
+
   }
 
   draw() {
@@ -19,7 +23,8 @@ class Ball {
       image(game.ballImage, this.x, this.y, this.width, this.height)
 
       this.x += this.xspeed;
-      this.y += this.yspeed;
+      this.y += this.yspeed
+      this.y += this.gravity;
 
       if (this.x <= 0) {
         this.xspeed = -this.xspeed;
@@ -49,64 +54,94 @@ class Ball {
 
       if (this.y >= 600 - this.height && this.x <= 615) {
         opponentScore = opponentScore + 1
-        game.player.x = 277,5
+        game.player.x = 277, 5
         game.player.y = 600 - this.height
-        game.opponent.x = 897,5   
+        game.opponent.x = 897, 5
         game.opponent.y = 600 - this.height
+        this.xspeed = 8
       }
 
       if (this.y >= 600 - this.height && this.x > 635) {
         playerScore = playerScore + 1;
-        game.player.x = 277,5
+        game.player.x = 277, 5
         game.player.y = 600 - this.height
-        game.opponent.x = 897,5   
+        game.opponent.x = 897, 5
         game.opponent.y = 600 - this.height
+        this.xspeed = 8
+
       }
     }
-    
-      checkGameOverPlayer();
-      if (gameOverPlayer == true) {
-        fill("blue")
-        rect(100, 50, 1000, 600)
-        fill("white")
-        text("Player Green won! To restart the game, press ENTER ", 200, 350)
 
-        checkRestartOpponentWon();
-      }
+    checkGameOverPlayer();
+    if (gameOverPlayer == true) {
+      fill("blue")
+      rect(100, 50, 1000, 600)
+      fill("white")
+      text("Player Green won! To restart the game, press ENTER ", 200, 350)
 
-      checkGameOverOpponent();
-      if (gameOverOpponent == true) {
-        fill("blue")
-        rect(100, 50, 1000, 600)
-        fill("white")
-        text("Player Red won! To restart the game, press ENTER ", 200, 350)
-
-        checkRestartPlayerWon();
-      }
-
+      checkRestartOpponentWon();
     }
-  
+
+    checkGameOverOpponent();
+    if (gameOverOpponent == true) {
+      fill("blue")
+      rect(100, 50, 1000, 600)
+      fill("white")
+      text("Player Red won! To restart the game, press ENTER ", 200, 350)
+
+      checkRestartPlayerWon();
+    }
+
+  }
 
 
-  collision(playerInfo) {
-    console.log(this.lastCollision)
-    
+
+  collisionPlayer(playerInfo) {
+
     let ballX = this.x + this.width / 2
     let ballY = this.y + this.height / 2
 
     let playerX = playerInfo.x + playerInfo.width / 2
     let playerY = playerInfo.y + playerInfo.height / 2
 
-    if (dist(ballX, ballY, playerX, playerY) <= 80) {
-      this.xspeed = -this.xspeed
-    }
+    if (this.collisionPlayerAllowed == true && dist(ballX, ballY, playerX, playerY) <= 80) {
+      this.xspeed = -this.xspeed*1.05
+      this.yspeed = -this.yspeed
+      this.collisionPlayerAllowed = false
 
+    }
+    if (dist(ballX, ballY, playerX, playerY) > 150) {
+      this.collisionPlayerAllowed = true
+
+    }
   }
+
+  collisionOpponent(opponentInfo) {
+
+    let ballX = this.x + this.width / 2
+    let ballY = this.y + this.height / 2
+
+    let opponentX = opponentInfo.x + opponentInfo.width / 2
+    let opponentY = opponentInfo.y + opponentInfo.height / 2
+
+    if (this.collisionOpponentAllowed == true && dist(ballX, ballY, opponentX, opponentY) <= 80) {
+      this.xspeed = -this.xspeed*1.05
+      this.yspeed = -this.yspeed
+      this.collisionOpponentAllowed = false
+
+    }
+    if (dist(ballX, ballY, opponentX, opponentY) > 150) {
+      this.collisionOpponentAllowed = true
+
+    }
+  }
+
+
 }
 
 
 function checkGameOverPlayer() {
-  if (opponentScore >= 2) {
+  if (opponentScore >= 5) {
     gameOverPlayer = true
   }
 }
@@ -138,7 +173,7 @@ function restartGameOpponentWon() {
 }
 
 function checkGameOverOpponent() {
-  if (playerScore >= 2) {
+  if (playerScore >= 5) {
     gameOverOpponent = true
   }
 }

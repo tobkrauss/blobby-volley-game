@@ -40,8 +40,8 @@ if (mode == 1) {
     this.player.draw()
     this.opponent.draw()
     this.ball.draw()
-    this.ball.collision(this.player)
-    this.ball.collision(this.opponent)
+    this.ball.collisionPlayer(this.player)
+    this.ball.collisionOpponent(this.opponent)
 }
 }
 }

@@ -4,8 +4,9 @@ class Player {
         this.height = 120
         this.x = 277,5
         this.y = 600 - this.height
-        this.velocity = 0
         this.gravity = 4
+
+
     }
     draw() {
     image(game.playerImage, this.x, this.y, this.width, this.height)

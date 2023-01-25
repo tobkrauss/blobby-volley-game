@@ -6,6 +6,7 @@ class Opponent {
         this.y = 600 - this.height
         this.velocity = 0
         this.gravity = 4
+
 }
 draw() {
     image(game.opponentImage, this.x, this.y, this.width, this.height)
