@@ -52,22 +52,26 @@ class Ball {
       text("Score " + opponentScore, 1050, 50, 300, 300)
       text("Score " + playerScore, 100, 50, 300, 300)
 
-      if (this.y >= 600 - this.height && this.x <= 615) {
+      if (this.y >= 600 - this.height && this.x <= 625) {
         opponentScore = opponentScore + 1
         game.player.x = 277, 5
         game.player.y = 600 - this.height
         game.opponent.x = 897, 5
         game.opponent.y = 600 - this.height
-        this.xspeed = 8
+        this.x = 850
+        this.y = 300
+        this.xspeed = 9
       }
 
-      if (this.y >= 600 - this.height && this.x > 635) {
+      if (this.y >= 600 - this.height && this.x > 625) {
         playerScore = playerScore + 1;
         game.player.x = 277, 5
         game.player.y = 600 - this.height
         game.opponent.x = 897, 5
         game.opponent.y = 600 - this.height
-        this.xspeed = 8
+        this.x = 300
+        this.y = 300
+        this.xspeed = 9
 
       }
     }
