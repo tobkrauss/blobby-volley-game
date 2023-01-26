@@ -10,9 +10,9 @@ class Ball {
     this.height = 80
     this.x = 200
     this.y = 300
-    this.xspeed = 8
+    this.xspeed = 9
     this.yspeed = -2.5
-    this.gravity = 0.7 
+    this.gravity = 0.6
     this.collisionPlayerAllowed = true
     this.collisionOpponentAllowed = true
 
@@ -114,7 +114,7 @@ class Ball {
 
     if (this.collisionPlayerAllowed == true && dist(ballX, ballY, playerX, playerY) <= 80) {
       game.soundCollision.play();
-      this.xspeed = -this.xspeed*1.05
+      this.xspeed = -this.xspeed*1.1
       this.yspeed = -this.yspeed
       this.collisionPlayerAllowed = false
 
@@ -135,7 +135,7 @@ class Ball {
 
     if (this.collisionOpponentAllowed == true && dist(ballX, ballY, opponentX, opponentY) <= 80) {
       game.soundCollision.play();
-      this.xspeed = -this.xspeed*1.05
+      this.xspeed = -this.xspeed*1.1
       this.yspeed = -this.yspeed
       this.collisionOpponentAllowed = false
 
