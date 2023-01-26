@@ -12,7 +12,7 @@ class Ball {
     this.y = 300
     this.xspeed = 9
     this.yspeed = -2.5
-    this.gravity = 0.6
+    this.gravity = 0.5
     this.collisionPlayerAllowed = true
     this.collisionOpponentAllowed = true
 
