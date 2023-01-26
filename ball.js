@@ -78,20 +78,24 @@ class Ball {
 
     checkGameOverPlayer();
     if (gameOverPlayer == true) {
-      fill("blue")
-      rect(100, 50, 1000, 600)
+      fill("#BFBFBF")
+      stroke("#BFBFBF")
+      rect(100, 50, 1050, 600, 10)
       fill("white")
-      text("Player Green won! To restart the game, press ENTER ", 200, 350)
+      text("Player Green won " + opponentScore + ":" + playerScore +"! To restart the game, press ENTER", 180, 200)
+      image(game.playerGreenWonImage, 560, 300, 120, 200)
 
       checkRestartOpponentWon();
     }
 
     checkGameOverOpponent();
     if (gameOverOpponent == true) {
-      fill("blue")
-      rect(100, 50, 1000, 600)
+      fill("#BFBFBF")
+      stroke ("#BFBFBF")
+      rect(100, 50, 1050, 600, 10)
       fill("white")
-      text("Player Red won! To restart the game, press ENTER ", 200, 350)
+      text("Player Red won " + playerScore + ":" + opponentScore +"! To restart the game, press ENTER", 180, 200)
+      image(game.playerRedWonImage, 560, 300, 120, 200)
 
       checkRestartPlayerWon();
     }
@@ -109,7 +113,7 @@ class Ball {
     let playerY = playerInfo.y + playerInfo.height / 2
 
     if (this.collisionPlayerAllowed == true && dist(ballX, ballY, playerX, playerY) <= 80) {
-      /* game.soundCollision.play(); */
+      game.soundCollision.play();
       this.xspeed = -this.xspeed*1.05
       this.yspeed = -this.yspeed
       this.collisionPlayerAllowed = false
@@ -130,7 +134,7 @@ class Ball {
     let opponentY = opponentInfo.y + opponentInfo.height / 2
 
     if (this.collisionOpponentAllowed == true && dist(ballX, ballY, opponentX, opponentY) <= 80) {
-      /* game.soundCollision.play(); */
+      game.soundCollision.play();
       this.xspeed = -this.xspeed*1.05
       this.yspeed = -this.yspeed
       this.collisionOpponentAllowed = false
@@ -147,9 +151,9 @@ class Ball {
 
 
 function checkGameOverPlayer() {
-  if (opponentScore >= 5) {
+  if (opponentScore >= 1) {
     gameOverPlayer = true
-   /*  game.soundGameOver.play(); */
+    game.soundGameOverRed.play();
   }
 }
 
@@ -179,9 +183,9 @@ function restartGameOpponentWon() {
 }
 
 function checkGameOverOpponent() {
-  if (playerScore >= 5) {
+  if (playerScore >= 1) {
     gameOverOpponent = true
-   /*  game.soundGameOver.play(); */
+    game.soundGameOverGreen.play();
   }
 }
 
