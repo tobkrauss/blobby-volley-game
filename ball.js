@@ -151,7 +151,7 @@ class Ball {
 
 
 function checkGameOverPlayer() {
-  if (opponentScore >= 1) {
+  if (opponentScore >= 5) {
     gameOverPlayer = true
     game.soundGameOverRed.play();
   }
@@ -183,7 +183,7 @@ function restartGameOpponentWon() {
 }
 
 function checkGameOverOpponent() {
-  if (playerScore >= 1) {
+  if (playerScore >= 5) {
     gameOverOpponent = true
     game.soundGameOverGreen.play();
   }
