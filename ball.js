@@ -114,7 +114,7 @@ class Ball {
 
     if (this.collisionPlayerAllowed == true && dist(ballX, ballY, playerX, playerY) <= 80) {
       game.soundCollision.play();
-      this.xspeed = -this.xspeed*1.1
+      this.xspeed = -this.xspeed*1.07
       this.yspeed = -this.yspeed
       this.collisionPlayerAllowed = false
 
@@ -135,7 +135,7 @@ class Ball {
 
     if (this.collisionOpponentAllowed == true && dist(ballX, ballY, opponentX, opponentY) <= 80) {
       game.soundCollision.play();
-      this.xspeed = -this.xspeed*1.1
+      this.xspeed = -this.xspeed*1.07
       this.yspeed = -this.yspeed
       this.collisionOpponentAllowed = false
 
